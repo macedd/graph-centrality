@@ -10,6 +10,7 @@
 (defn -main
   [& args]
   (let [g (graph-load filepath)]
+    ; (println g)
     ; (println (graph-closeness g))
     (graph-centrality g)
     )

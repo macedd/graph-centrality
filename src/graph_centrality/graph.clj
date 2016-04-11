@@ -16,9 +16,9 @@
         (assoc m k []))
       (assoc m k (conj (get m k) v))
       ))
-  (reduce #(do
-              (merger %1 %2)
-              (merger %1 (reverse %2)))
+  (reduce #(-> %1
+            (merger %2)
+            (merger (reverse %2)))
           {} edges))
 
 (defn graph-load [filepath]

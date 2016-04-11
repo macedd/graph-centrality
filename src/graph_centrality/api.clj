@@ -16,7 +16,7 @@
 
 (defn check-edge [edge]
   (and (not-empty edge)
-      (= 2 (count (.split edge " ")))))
+      (= 2 (count (.split edge "\\s")))))
   
 
 (defn append-edge [edge]
