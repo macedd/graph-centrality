@@ -1,6 +1,6 @@
 # graph-centrality
 
-A Clojure app that implements Graph Centrality and exposes an API to handle the graph edges.
+A Clojure app that implements Graph Closest Centrality and exposes an API to handle the graph edges.
 
 ## Usage
 
@@ -21,6 +21,7 @@ Run the app or the ring server to interact with the api
     lein repl
     (-main)
     (let g (graph-load filepath)
+        (println g)
         (println (graph-closeness g))
         (graph-centrality g))
 

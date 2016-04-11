@@ -5,7 +5,6 @@
 
 (def filepath "resources/edges")
 
-; (def g (graph-load filepath))
 
 (defn -main
   [& args]

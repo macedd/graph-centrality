@@ -18,13 +18,13 @@
   (and (not-empty edge)
       (= 2 (count (.split edge "\\s")))))
   
-
 (defn append-edge [edge]
   (if (check-edge edge)
     (locking filewrite
       (spit filepath (str "\n" edge) :append true))))
 
-; (spit "event.log" "test 1\n" :append true)
+
+
 
 (defroutes app
   (ANY "/centrality" [] (resource :available-media-types ["application/json"]
@@ -37,6 +37,7 @@
                           :post! (fn [ctx]
                                   (let [body (slurp (get-in ctx [:request :body]))]
                                       (append-edge body))))))
-(def handler 
+
+(def handler
   (-> app 
       wrap-params))
