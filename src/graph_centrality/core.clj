@@ -1,8 +1,7 @@
 (ns graph-centrality.core
   (:require [graph-centrality.graph :as graph])
   (:use [clojure.tools.namespace.repl :only (refresh)]
-        [graph-centrality.graph]
-        ))
+        [graph-centrality.graph]))
 
 (def filepath "resources/edges")
 

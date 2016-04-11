@@ -3,7 +3,6 @@
   (:use [clojure.tools.namespace.repl :only (refresh)]
         [clojure.string :only (split)]))
 
-
 (defn read-edges [filepath]
   "Load text file into vector of edges"
     (map #(split % #" ")

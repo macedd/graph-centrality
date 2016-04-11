@@ -1,14 +1,29 @@
 # graph-centrality
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure app that implements Graph Centrality and exposes an API to handle the graph edges.
 
 ## Usage
 
-FIXME
+Run the app or the ring server to interact with the api
+    
+**Server**
+
+    lein ring server
+    # Load Centrality
+    curl -i http://localhost:3000/centrality
+    # Post new Edge
+    curl -XPOST --header 'Content-Type: text/plain' \
+        -d "63 101" \
+        -i http://localhost:3000/add-edge
+
+**Repl**
+
+    lein repl
+    (-main)
+    (let g (graph-load filepath)
+        (println (graph-closeness g))
+        (graph-centrality g))
 
 ## License
 
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+GPLv2
