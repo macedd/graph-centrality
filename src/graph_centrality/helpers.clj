@@ -3,10 +3,9 @@
 
 (defn lazy-read [file]
   "Read file sequentially while closing the reader after done"
-  (defn helper [rdr]
+  (let [rdr (reader file)]
     (lazy-seq
-      (if-let [line (.readLine rdr)]
-        (cons line (helper rdr))
-        (.close rdr))))
-  (lazy-seq
-    (helper (reader file))))
+      (loop [line (.readLine rdr) acc (list)]
+        (if (seq line)
+            (recur (.readLine rdr) (cons line acc))
+            (do (.close rdr) acc))))))

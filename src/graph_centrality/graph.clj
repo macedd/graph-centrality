@@ -10,16 +10,12 @@
 
 (defn merge-edges [edges]
   "Map vertices with their neighbours"
-  (defn merger [m e]
-    (let [k (first e) v (last e)]
-      (if-not (contains? m k)
-        (assoc m k []))
-      (assoc m k (conj (get m k) v))
-      ))
-  (reduce #(-> %1
-            (merger %2)
-            (merger (reverse %2)))
-          {} edges))
+  (let [merger (fn [m [k v]]
+            (assoc m k (conj (get m k) v)))]
+    (reduce #(-> %1
+              (merger %2)
+              (merger (reverse %2)))
+            {} edges)))
 
 (defn graph-load [filepath]
   "Load the graph with mapped vertices"
