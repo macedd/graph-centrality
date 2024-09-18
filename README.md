@@ -4,23 +4,41 @@ A Clojure app that implements Graph Closest Centrality and exposes an API to han
 
 ## Usage
 
-Run the app or the ring server to interact with the api
-    
-**Server**
+Install the dependencies
 
-    lein ring server
-    # Load Centrality
+    lein install
+
+Run the app or the ring server to interact with the api
+
+### Server
+
+Start the ring server
+
+    lein ring server-headless
+
+Compute Current Centrality
+
     curl -i http://localhost:3000/centrality
-    # Post new Edge
+
+Post new Edge (will save to `resources/edges`)
+
     curl -XPOST --header 'Content-Type: text/plain' \
         -d "63 101" \
         -i http://localhost:3000/add-edge
 
-**Repl**
+### Repl
+
+Start the repl
 
     lein repl
+
+Run the centrality computation
+
     (-main)
-    (let g (graph-load filepath)
+
+Interact with the graph and its contents (edges are in `resources/edges`)
+
+    (let [g (graph-load filepath)]
         (println g)
         (println (graph-closeness g))
         (graph-centrality g))
